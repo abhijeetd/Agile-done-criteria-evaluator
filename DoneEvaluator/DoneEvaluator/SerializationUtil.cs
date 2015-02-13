@@ -10,9 +10,13 @@ namespace DoneEvaluator
 {
     public static class SerializationUtil
     {
-        public static string Serialize<T>(this T toSerialize)
+        //public static string Serialize<T>(this T toSerialize)
+        //{
+        //    return Serialize<T>(toSerialize, null);
+        //}
+        public static string Serialize<T>(this T toSerialize, XmlAttributeOverrides attrOverrides)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
+            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType(), attrOverrides);
             StringWriter textWriter = new StringWriter();
 
             xmlSerializer.Serialize(textWriter, toSerialize);

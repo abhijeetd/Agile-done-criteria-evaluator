@@ -14,8 +14,7 @@ namespace DoneEvaluator.Console
 
             if (Context != null)
             {
-                var formatter = Context.DataFormatter as TimeLogDataFormatter;
-
+                var formatter = GetPlugin<TimeLogDataFormatter>();
                 if (formatter != null)
                 {
                     System.Console.WriteLine(formatter.FormatData(Context.Data));

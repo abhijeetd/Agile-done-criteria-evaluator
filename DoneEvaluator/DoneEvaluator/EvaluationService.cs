@@ -24,7 +24,6 @@ namespace DoneEvaluator
             }
 
             var notificationListeners = PluginService.GetPlugins<NotificationListener>(typeof(NotificationListener).FullName);
-            var formatter = PluginService.GetPlugin<TimeLogDataFormatter>(typeof(TimeLogDataFormatter).FullName);
             var dataProvider = PluginService.GetPlugin<TimeLogDataProvider>(typeof(TimeLogDataProvider).FullName);
             var analyzers = PluginService.GetPlugins<TimeLogAnalyzer>(typeof(TimeLogAnalyzer).FullName);
 
@@ -53,7 +52,7 @@ namespace DoneEvaluator
                     {
                         try
                         {
-                            p.Notify(new TimeLogNotificationContext { Data = data, DataFormatter = formatter });
+                            p.Notify(new TimeLogNotificationContext { Data = data});
                         }
                         catch (Exception ex)
                         {

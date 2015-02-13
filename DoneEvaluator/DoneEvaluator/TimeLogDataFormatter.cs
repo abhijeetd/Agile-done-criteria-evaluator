@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DoneEvaluator
 {
-    public abstract class TimeLogDataFormatter : DataFormatter
+    public abstract class TimeLogDataFormatter : DataFormatter 
     {
         public abstract string FormatTitle(TimeLogData data);
         public abstract string FormatData(TimeLogData data);

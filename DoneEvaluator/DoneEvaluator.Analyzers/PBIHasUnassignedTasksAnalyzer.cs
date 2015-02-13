@@ -15,7 +15,7 @@ namespace DoneEvaluator.Analyzers
             {
                 workitem.Observations.Add(new Observation
                 {
-                    Code = "Mismatch",
+                    Code = "Lifecycle checklist",
                     Title = "There are one or more unassigned tasks created for this workitem.",
                     AssignedTo = workitem.AssignedTo   //TODO: Logic to identify assignedTo
                 });
