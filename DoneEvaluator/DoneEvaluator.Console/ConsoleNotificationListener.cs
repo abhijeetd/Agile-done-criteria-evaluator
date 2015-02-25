@@ -10,15 +10,11 @@ namespace DoneEvaluator.Console
     {
         public override void Notify(NotificationContext context)
         {
-            var Context = context as TimeLogNotificationContext;
+            var Context = context as GlobalNotificationContext;
 
             if (Context != null)
             {
-                var formatter = GetPlugin<TimeLogDataFormatter>();
-                if (formatter != null)
-                {
-                    System.Console.WriteLine(formatter.FormatData(Context.Data));
-                }
+                    System.Console.WriteLine("{0}: {1}", ToString(), NotificationListenerType);
             }
         }
     }

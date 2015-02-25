@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DoneEvaluator
 {
-    public class TimeLogNotificationContext : NotificationContext
+    public class TeamMemberNotificationContext : NotificationContext
     {
         public TimeLogData Data { get; set; }
     }

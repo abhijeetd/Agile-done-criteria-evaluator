@@ -3,9 +3,17 @@ using System;
 
 namespace DoneEvaluator
 {
+    public enum NotificationListenerType
+    {
+        Global,
+        PerTeamMember
+    }
+
     public abstract class NotificationListener : Plugin
     {
         public abstract void Notify(NotificationContext context);
+ 
+        public NotificationListenerType NotificationListenerType { get; set; }
 
         public NotificationListener()
         {

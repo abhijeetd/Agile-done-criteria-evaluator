@@ -52,6 +52,7 @@
     <Compile Include="DataFormatter.cs" />
     <Compile Include="EvaluationService.cs" />
     <Compile Include="EvaluationServiceContext.cs" />
+    <Compile Include="GlobalNotificationContext.cs" />
     <Compile Include="ManifestFileContextProvider.cs" />
     <Compile Include="Milestone.cs" />
     <Compile Include="NotificationContext.cs" />
@@ -67,7 +68,7 @@
     <Compile Include="TimeLogData.cs" />
     <Compile Include="TimeLogDataFormatter.cs" />
     <Compile Include="TimeLogDataProvider.cs" />
-    <Compile Include="TimeLogNotificationContext.cs" />
+    <Compile Include="TeamMemberNotificationContext.cs" />
     <Compile Include="XslUtil.cs" />
   </ItemGroup>
   <ItemGroup>

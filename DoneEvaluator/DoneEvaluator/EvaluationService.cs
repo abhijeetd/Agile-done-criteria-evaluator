@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoneEvaluator
 {
@@ -35,6 +33,15 @@ namespace DoneEvaluator
 
             AnalyzeWorkitems(Context, workitems, analyzers);
 
+            RaiseGlobalNotifications(notificationListeners, workitems);
+
+            RaiseTeamMemberNotifications(notificationListeners, workitems);
+        }
+
+        private void RaiseTeamMemberNotifications(List<NotificationListener> notificationListeners, List<TimeLog> workitems)
+        {
+            var teamMemberNotificationListeners = notificationListeners.Where(p => p.NotificationListenerType == NotificationListenerType.PerTeamMember).ToList();
+
             var developers = workitems.Select(p => p.AssignedTo).Distinct().ToList();
 
             foreach (var developer in developers)
@@ -48,11 +55,11 @@ namespace DoneEvaluator
                 string devEmail = Context.TeamProfiles.Where(p => p.Fullname == developer).Select(p => p.Email).SingleOrDefault();
                 if (string.IsNullOrEmpty(devEmail) == false)
                 {
-                    notificationListeners.ForEach(p =>
+                    teamMemberNotificationListeners.ForEach(p =>
                     {
                         try
                         {
-                            p.Notify(new TimeLogNotificationContext { Data = data});
+                            p.Notify(new TeamMemberNotificationContext { Data = data });
                         }
                         catch (Exception ex)
                         {
@@ -62,6 +69,23 @@ namespace DoneEvaluator
                     });
                 }
             }
+        }
+
+        private void RaiseGlobalNotifications(List<NotificationListener> notificationListeners, List<TimeLog> workitems)
+        {
+            var globalNotificationListeners = notificationListeners.Where(p => p.NotificationListenerType == NotificationListenerType.Global).ToList();
+            globalNotificationListeners.ForEach(p =>
+            {
+                try
+                {
+                    p.Notify(new GlobalNotificationContext { Workitems = workitems });
+                }
+                catch (Exception ex)
+                {
+                    //Log exception
+                    Console.WriteLine("Error occured: {0}", ex.Message);
+                }
+            });
         }
 
         private void AnalyzeWorkitems(EvaluationServiceContext context, List<TimeLog> list, List<TimeLogAnalyzer> analyzers)
