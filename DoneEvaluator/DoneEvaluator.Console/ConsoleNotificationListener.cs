@@ -14,7 +14,7 @@ namespace DoneEvaluator.Console
 
             if (Context != null)
             {
-                    System.Console.WriteLine("{0}: {1}", ToString(), NotificationListenerType);
+                    System.Console.WriteLine("{0}: {1}", ToString(), ListenerType);
             }
         }
     }

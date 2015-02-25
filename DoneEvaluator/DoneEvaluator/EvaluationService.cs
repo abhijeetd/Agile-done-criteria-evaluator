@@ -40,7 +40,7 @@ namespace DoneEvaluator
 
         private void RaiseTeamMemberNotifications(List<NotificationListener> notificationListeners, List<TimeLog> workitems)
         {
-            var teamMemberNotificationListeners = notificationListeners.Where(p => p.NotificationListenerType == NotificationListenerType.PerTeamMember).ToList();
+            var teamMemberNotificationListeners = notificationListeners.Where(p => p.ListenerType == NotificationListenerType.PerTeamMember).ToList();
 
             var developers = workitems.Select(p => p.AssignedTo).Distinct().ToList();
 
@@ -73,7 +73,7 @@ namespace DoneEvaluator
 
         private void RaiseGlobalNotifications(List<NotificationListener> notificationListeners, List<TimeLog> workitems)
         {
-            var globalNotificationListeners = notificationListeners.Where(p => p.NotificationListenerType == NotificationListenerType.Global).ToList();
+            var globalNotificationListeners = notificationListeners.Where(p => p.ListenerType == NotificationListenerType.Global).ToList();
             globalNotificationListeners.ForEach(p =>
             {
                 try

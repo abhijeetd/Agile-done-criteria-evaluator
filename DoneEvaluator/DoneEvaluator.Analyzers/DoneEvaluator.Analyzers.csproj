@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PluggableService.Framework">
-      <HintPath>..\packages\PluggableService.Framework.1.0.2\lib\PluggableService.Framework.dll</HintPath>
+    <Reference Include="PluggableService.Framework, Version=1.0.5534.31548, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PluggableService.Framework.1.0.3\lib\PluggableService.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

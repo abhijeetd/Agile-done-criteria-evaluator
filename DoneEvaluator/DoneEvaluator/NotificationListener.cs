@@ -13,7 +13,7 @@ namespace DoneEvaluator
     {
         public abstract void Notify(NotificationContext context);
  
-        public NotificationListenerType NotificationListenerType { get; set; }
+        public NotificationListenerType ListenerType { get; set; }
 
         public NotificationListener()
         {
